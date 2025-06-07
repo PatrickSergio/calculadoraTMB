@@ -1,94 +1,186 @@
+
+
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #282c34;
-    color: #61dafb;
-    font-size: 1.2rem;
-    font-family: 'Arial', sans-serif;
-    padding: 1.2rem;
-    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--input-bg);
+    box-shadow: 0 4px 12px var(--shadow);
+    border-radius: 8px;
 }
 
 .header {
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.formGrid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .inputGroup {
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
 }
 
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type='number'],
+select {
+    padding: 0.75rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+}
+
+input[type='number']:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 127, 80, 0.3);
+}
+
+.error {
+    color: #e63946;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* Toggle Métrico/Imperial */
+.toggleGroup {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.toggleGroup label {
+    display: flex;
+    align-items: center;
+}
+
+.toggleGroup input {
+    margin-right: 0.5rem;
+}
+
+/* Altura em Imperial: ft + in */
+.imperialHeight {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.imperialHeight input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+}
+
+.imperialSep {
+    margin-right: 0.5rem;
+    font-weight: 500;
+}
+
+/* Radios de atividade */
 .radioGroup {
     display: flex;
-    padding: 1.2rem;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+}
+
+.radioGroup legend {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 
 .radioGroup label {
     display: flex;
-    align-items: flex-start;
-    font-size: 1.1rem;
+    align-items: center;
 }
 
-.radioGroup input[type="radio"] {
-    margin-right: 1rem;
-    width: 1.3rem;
-    height: 1.3rem;
-    background-color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex-shrink: 0;
-    margin-bottom: 2rem;
-    accent-color: #01404e;
+.radioGroup input {
+    margin-right: 0.75rem;
+    accent-color: var(--primary);
 }
 
-input[type="number"],
-select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #61dafb;
-    background-color: #333;
-    color: #61dafb;
-    width: calc(100% - 20px);
-    box-sizing: border-box;
-    margin-bottom: 10px;
+/* Botões */
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
+.button {
+    flex: 1 1 140px;
+    padding: 0.75rem;
     border: none;
-    border-radius: 5px;
-    background-color: #61dafb;
-    color: #282c34;
+    border-radius: 4px;
+    background-color: var(--primary);
+    color: var(--bg);
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s, background 0.2s;
 }
 
-button:hover {
-    background-color: #117c99;
-    transform: translateY(-2px);
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
+.button:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.02);
+    background-color: var(--accent);
+}
+
+/* Resultado */
 .result {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #333;
-    color: #61dafb;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 400px;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--bg);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px var(--shadow);
     text-align: center;
+}
+
+/* Tabela de TDEE */
+.tdeeTable {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.tdeeTable h4 {
+    margin-bottom: 0.5rem;
+}
+
+.tdeeTable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tdeeTable li {
+    padding: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .toggleGroup {
+        flex-direction: column;
+    }
 }
